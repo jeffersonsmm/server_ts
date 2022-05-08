@@ -1,13 +1,14 @@
 import 'dotenv/config'
 import express from 'express'
+import cors from 'cors'
+
+import { routes } from './routes'
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
-
-app.post('/', (req, res) => {
-  return res.send('')
-})
+app.use(routes)
 
 app.listen(process.env.PORT || 3333, () => {
   console.log(`✔ server is running on port ${process.env.PORT || 3333}!`);
